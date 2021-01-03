@@ -10,6 +10,12 @@
       const articles = await res.json();
 
       console.log("display articles: ", articles);
+      const container = document.querySelector('#articles');
+      articles.forEach((article) => {
+        const image = document.createElement('img');
+        image.setAttribute('src', article.thumbnail.url);
+        container.appendChild(image);
+      })
     }
 
     displayArticles();
