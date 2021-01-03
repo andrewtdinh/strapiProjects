@@ -3,4 +3,15 @@
   <div id="articles">
     Articles are below
   </div>
+
+  <script>
+    const displayArticles = async () => {
+      const res = await fetch('/articles');
+      const articles = await res.json();
+
+      console.log("display articles: ", articles);
+    }
+
+    displayArticles();
+  </script>
 </div>
