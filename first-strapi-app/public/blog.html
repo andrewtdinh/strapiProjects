@@ -23,6 +23,11 @@
         const title = document.createElement('title');
         title.innerText = article.title;
         container.appendChild(title);
+
+        /** CONTENT **/
+        const content = document.createElement('div');
+        content.innerText = article.content;
+        container.appendChild(content);
       })
     }
 
