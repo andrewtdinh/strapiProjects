@@ -11,10 +11,18 @@
 
       console.log("display articles: ", articles);
       const container = document.querySelector('#articles');
+      container.innerHTML = '';
+
       articles.forEach((article) => {
+        /** IMAGE **/
         const image = document.createElement('img');
         image.setAttribute('src', article.thumbnail.url);
         container.appendChild(image);
+
+        /** TITLE **/
+        const title = document.createElement('title');
+        title.innerText = article.title;
+        container.appendChild(title);
       })
     }
 
