@@ -72,6 +72,8 @@ const post = {
   }
 }
 
+const API_URL = 'http://localhost:1337/'
+
 const formatImageUrl = (url) => `${API_URL}${url}`;
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
@@ -80,6 +82,7 @@ export default () => {
 
   return (
     <div className="Post">
+      <img src={formatImageUrl(url)} alt="post hero" />
       <h4>{description}</h4>
       <div>
         <span>Likes: {likes}</span>
