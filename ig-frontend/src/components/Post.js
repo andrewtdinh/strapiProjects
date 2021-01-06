@@ -1,5 +1,3 @@
-// import React from 'react';
-
 const post = {
   "id": 1,
   "description": "This is an old picture of me in Panatnikhom.  This picture was taken when I was 12 years old and living in a refugee camp.",
@@ -74,8 +72,10 @@ const post = {
   }
 }
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => (
-  <div className="Post">
-    This is a post
-  </div>
-)
+export default () => {
+  return (
+    <div className="Post">
+      This is a post
+    </div>
+  );
+}
