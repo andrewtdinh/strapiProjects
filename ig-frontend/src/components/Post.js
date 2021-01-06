@@ -72,7 +72,7 @@ const post = {
   }
 }
 
-const API_URL = 'http://localhost:1337/'
+const API_URL = 'http://localhost:1337';
 
 const formatImageUrl = (url) => `${API_URL}${url}`;
 // eslint-disable-next-line import/no-anonymous-default-export
