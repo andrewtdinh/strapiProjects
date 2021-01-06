@@ -73,9 +73,15 @@ const post = {
 }
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+  const url = post.image && post.image.url;
+  const { description, likes } = post;
+
   return (
     <div className="Post">
-      This is a post
+      <h4>{description}</h4>
+      <div>
+        <span>Likes: {likes}</span>
+      </div>
     </div>
   );
 }
