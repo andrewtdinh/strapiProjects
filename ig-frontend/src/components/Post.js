@@ -71,6 +71,8 @@ const post = {
     "updated_at": "2021-01-05T07:12:16.166Z"
   }
 }
+
+const formatImageUrl = (url) => `${API_URL}${url}`;
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const url = post.image && post.image.url;
