@@ -82,7 +82,7 @@ export default () => {
 
   return (
     <div className="Post">
-      <img src={formatImageUrl(url)} alt="post hero" />
+      <img className="Post__Image" src={formatImageUrl(url)} alt="post hero" />
       <h4>{description}</h4>
       <div>
         <span>Likes: {likes}</span>
