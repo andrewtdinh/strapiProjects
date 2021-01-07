@@ -1,9 +1,10 @@
 body {
-  width: 400px;
+  width: 290px;
   margin: auto;
 }
 
 .Post {
+  margin: 12px auto;
   padding: 12px 20px;
   border: 1px solid #eee;
   border-radius: 4px;
