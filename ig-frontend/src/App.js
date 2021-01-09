@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import './App.css';
 import Post from './components/Post';
 
-const posts = [
+const mockPosts = [
   {
     "description":  "The first post",
     "likes": 26,
@@ -26,6 +27,7 @@ const posts = [
 ]
 
 function App() {
+  const [ posts, setPosts ] = useState(mockPosts);
 
   return (
     <div className="App">
