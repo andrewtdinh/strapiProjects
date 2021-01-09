@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     const getPosts = async () => {
       const response = await fetch('http://localhost:1337/posts');
-      const data = response.json();
+      const data = await response.json();
       setPosts(data);
     }
 
