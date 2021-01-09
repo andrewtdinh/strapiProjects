@@ -30,9 +30,15 @@ function App() {
   const [ posts, setPosts ] = useState([]);
 
   useEffect(() => {
-    setPosts(mockPosts);
+    const getPosts = async () => {
+      const response = await fetch('http://localhost:1337/posts');
+      const data = response.json();
+      setPosts(data);
+    }
+
+    getPosts();
   }, []);
-  
+
   return (
     <div className="App">
       {posts.map((post) => {
