@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Post from './components/Post';
 
@@ -27,8 +27,11 @@ const mockPosts = [
 ]
 
 function App() {
-  const [ posts, setPosts ] = useState(mockPosts);
+  const [ posts, setPosts ] = useState([]);
 
+  useEffect(() => {
+    setPosts(mockPosts);
+  })
   return (
     <div className="App">
       {posts.map((post) => {
