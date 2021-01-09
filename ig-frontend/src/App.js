@@ -31,7 +31,8 @@ function App() {
 
   useEffect(() => {
     setPosts(mockPosts);
-  })
+  }, []);
+  
   return (
     <div className="App">
       {posts.map((post) => {
