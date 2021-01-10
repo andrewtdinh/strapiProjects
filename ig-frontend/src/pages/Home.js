@@ -15,7 +15,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="Home">
       {posts.map((post) => {
         return (
           <Post
