@@ -1,6 +1,6 @@
 export default function Create() {
   return (
-    <div>
+    <div className="Create">
       Create page
     </div>
   )
