@@ -31,6 +31,7 @@ export default function Create() {
           onChange={(event) => setDescription(event.target.value)}
         />
         <input
+          type="file"
           placeholder="Add a file"
           onChange={(event) => setFile(event.target.files[0])}
         />
