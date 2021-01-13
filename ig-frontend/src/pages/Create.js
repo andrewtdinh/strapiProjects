@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export default function Create() {
   const [ description, setDescription ] = useState('');
+  const [ file, setFile ] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,6 +29,10 @@ export default function Create() {
           placeholder="Description"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
+        />
+        <input
+          placeholder="Add a file"
+          onChange={(event) => setFile(event.target.files[0])}
         />
         <button>Submit</button>
       </form>
