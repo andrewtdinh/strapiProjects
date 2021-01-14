@@ -17,10 +17,10 @@ module.exports = {
     let entity;
     if (ctx.is('multipart')) {
       const { data, files } = parseMultipartData(ctx);
-      entity = await strapi.services.restaurant.create(data, { files });
+      entity = await strapi.services.post.create(data, { files });
     } else {
-      entity = await strapi.services.restaurant.create(ctx.request.body);
+      entity = await strapi.services.post.create(ctx.request.body);
     }
-    return sanitizeEntity(entity, { model: strapi.models.restaurant });
+    return sanitizeEntity(entity, { model: strapi.models.post });
   },
 };
