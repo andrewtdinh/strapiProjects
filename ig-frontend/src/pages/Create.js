@@ -7,6 +7,10 @@ export default function Create() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const formData = new FormData();
+    formData.append('data', JSON.stringify({description}));
+    formData.append('files.image', file);
+
     const response = await fetch('http://localhost:1337/posts', {
       method: 'POST',
       headers: {
