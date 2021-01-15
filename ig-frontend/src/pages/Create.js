@@ -7,6 +7,16 @@ export default function Create() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!description) {
+      // Add error message here
+      return
+    }
+
+    if (!file) {
+      // Add error message here
+      return
+    }
+
     const formData = new FormData();
     formData.append('data', JSON.stringify({description}));
     formData.append('files.image', file);
