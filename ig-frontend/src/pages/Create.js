@@ -40,7 +40,7 @@ export default function Create() {
     <div className="Create">
       <h2>Create</h2>
 
-      {error && <p>{error}</p>}
+      {error && <p className='errorMsg'>{error}</p>}
 
       <form onSubmit={handleSubmit}>
         <input 
