@@ -46,12 +46,18 @@ export default function Create() {
         <input 
           placeholder="Description"
           value={description}
-          onChange={(event) => setDescription(event.target.value)}
+          onChange={(event) => {
+            setError('');
+            setDescription(event.target.value)
+          }}
         />
         <input
           type="file"
           placeholder="Add a file"
-          onChange={(event) => setFile(event.target.files[0])}
+          onChange={(event) => {
+            setError('');
+            setFile(event.target.files[0])
+          }}
         />
         <button>Submit</button>
       </form>
