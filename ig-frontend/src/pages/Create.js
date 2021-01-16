@@ -21,12 +21,17 @@ export default function Create() {
     formData.append('data', JSON.stringify({description}));
     formData.append('files.image', file);
 
-    const response = await fetch('http://localhost:1337/posts', {
-      method: 'POST',
-      body: formData,
-    });
+    try {
+      const response = await fetch('http://localhost:1337/posts', {
+        method: 'POST',
+        body: formData,
+      });
 
-    const data = await response.json();
+      const data = await response.json();
+      console.log('Data: ', data);
+    } catch (err) {
+      console.log('Exception: ', err);
+    }
   }
 
   return (
