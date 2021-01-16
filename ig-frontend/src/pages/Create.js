@@ -3,6 +3,7 @@ import { useState } from 'react';
 export default function Create() {
   const [ description, setDescription ] = useState('');
   const [ file, setFile ] = useState(null);
+  const [ error, setError ] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,12 +32,15 @@ export default function Create() {
       console.log('Data: ', data);
     } catch (err) {
       console.log('Exception: ', err);
+      setError(err);
     }
   }
 
   return (
     <div className="Create">
       <h2>Create</h2>
+
+      {error && <p>{error}</p>}
 
       <form onSubmit={handleSubmit}>
         <input 
