@@ -9,12 +9,12 @@ export default function Create() {
     event.preventDefault();
 
     if (!description) {
-      // Add error message here
+      setError('Please add a description.');
       return
     }
 
     if (!file) {
-      // Add error message here
+      setError('Please add a file.');
       return
     }
 
