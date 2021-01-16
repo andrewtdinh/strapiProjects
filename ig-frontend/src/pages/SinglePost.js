@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Post from '../components/Post';
 
 export default function SinglePost({match}) {
   const { id } = match.params;
@@ -16,7 +17,7 @@ export default function SinglePost({match}) {
 
   return (
     <div>
-      Single Post
+      <Post {...post} />
     </div>
   )
 }
