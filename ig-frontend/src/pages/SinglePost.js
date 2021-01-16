@@ -17,7 +17,11 @@ export default function SinglePost({match}) {
 
   return (
     <div>
-      <Post {...post} />
+      <Post 
+        description={post.description}
+        url={post.image && post.image.url}
+        likes={post.likes}
+      />
     </div>
   )
 }
