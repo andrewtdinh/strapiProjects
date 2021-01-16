@@ -22,3 +22,12 @@ a {
 a.active {
   text-decoration: underline;
 }
+
+input {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5 rem;
+}
