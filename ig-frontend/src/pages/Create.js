@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Create() {
+export default function Create({history}) {
   const [ description, setDescription ] = useState('');
   const [ file, setFile ] = useState(null);
   const [ error, setError ] = useState('');
@@ -29,7 +29,8 @@ export default function Create() {
       });
 
       const data = await response.json();
-      console.log('Data: ', data);
+
+      history.push(`/${data.id}`);
     } catch (err) {
       console.log('Exception: ', err);
       setError(err);
