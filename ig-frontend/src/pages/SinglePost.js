@@ -4,6 +4,7 @@ import Post from '../components/Post';
 export default function SinglePost({match}) {
   const { id } = match.params;
   const [ post, setPost ] = useState({});
+  const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -11,12 +12,14 @@ export default function SinglePost({match}) {
       const data = await response.json();
       console.log({data});
       setPost(data);
+      setLoading(false);
     }
     fetchPost();
-  });
+  }, []);
 
   return (
     <div>
+      {loading && <p>Loading...</p>}
       <Post 
         description={post.description}
         url={post.image && post.image.url}
