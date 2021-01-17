@@ -6,11 +6,18 @@ export default function SinglePost({match}) {
   const [ post, setPost ] = useState({});
   const [ loading, setLoading ] = useState(false);
 
+  const handleDelete = async () => {
+    const response = await fetch(`http://localhost:1337/posts/${id}`, {
+      method: 'DELETE'
+    });
+    await response.json();
+  }
+
   useEffect(() => {
     const fetchPost = async () => {
       const response = await fetch(`http://localhost:1337/posts/${id}`);
       const data = await response.json();
-      console.log({data});
+
       setPost(data);
       setLoading(false);
     }
@@ -29,7 +36,7 @@ export default function SinglePost({match}) {
                 url={post.image && post.image.url}
                 likes={post.likes}
               />
-              <button>Delete this post.</button>
+              <button onClick={handleDelete}>Delete this post.</button>
             </>
           }
           {!post.id && 
