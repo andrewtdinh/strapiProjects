@@ -20,7 +20,18 @@ export default function SinglePost({match, history}) {
 
   const handleEditSubmit = async (event) => {
     event.preventDefault();
-    console.log('Handle Edit Submit')
+
+    const response = await fetch(`http://localhost:1337/posts/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        description,
+      })
+    });
+    const data = await response.json();
+    console.log('handleEditSubmit: data  -->', data);
   }
 
   useEffect(() => {
