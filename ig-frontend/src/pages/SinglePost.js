@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Post from '../components/Post';
 
-export default function SinglePost({match}) {
+export default function SinglePost({match, history}) {
   const { id } = match.params;
   const [ post, setPost ] = useState({});
   const [ loading, setLoading ] = useState(false);
@@ -11,6 +11,7 @@ export default function SinglePost({match}) {
       method: 'DELETE'
     });
     await response.json();
+    history.push('/')
   }
 
   useEffect(() => {
