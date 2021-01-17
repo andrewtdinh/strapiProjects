@@ -4,7 +4,7 @@ import Post from '../components/Post';
 export default function SinglePost({match}) {
   const { id } = match.params;
   const [ post, setPost ] = useState({});
-  const [ loading, setLoading ] = useState(true);
+  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -20,11 +20,23 @@ export default function SinglePost({match}) {
   return (
     <div>
       {loading && <p>Loading...</p>}
-      <Post 
-        description={post.description}
-        url={post.image && post.image.url}
-        likes={post.likes}
-      />
+      {!loading &&
+        <>
+          {post.id && 
+            <>
+              <Post 
+                description={post.description}
+                url={post.image && post.image.url}
+                likes={post.likes}
+              />
+              <button>Delete this post.</button>
+            </>
+          }
+          {!post.id && 
+            <p>404 - Page not found!</p>
+          }
+        </>
+      }
     </div>
   )
 }
