@@ -5,6 +5,10 @@ export default function SinglePost({match, history}) {
   const { id } = match.params;
   const [ post, setPost ] = useState({});
   const [ loading, setLoading ] = useState(false);
+  const [ edit, setEdit ] = useState(false);
+
+  // Use for the edit form
+  const [ description, setDescription ] = useState('');
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:1337/posts/${id}`, {
@@ -14,12 +18,18 @@ export default function SinglePost({match, history}) {
     history.push('/')
   }
 
+  const handleEditSubmit = async (event) => {
+    event.preventDefault();
+    console.log('Handle Edit Submit')
+  }
+
   useEffect(() => {
     const fetchPost = async () => {
       const response = await fetch(`http://localhost:1337/posts/${id}`);
       const data = await response.json();
 
       setPost(data);
+      setDescription(data.description);
       setLoading(false);
     }
     fetchPost();
@@ -38,6 +48,13 @@ export default function SinglePost({match, history}) {
                 likes={post.likes}
               />
               <button onClick={handleDelete}>Delete this post.</button>
+              <button onClick={() => setEdit(true)}>Edit this post.</button>
+              {edit &&
+                <form onSubmit={handleEditSubmit}>
+                  <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="New description" />
+                  <button>Confirm</button>
+                </form>
+              }
             </>
           }
           {!post.id && 
