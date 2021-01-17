@@ -31,7 +31,7 @@ export default function SinglePost({match, history}) {
       })
     });
     const data = await response.json();
-    console.log('handleEditSubmit: data  -->', data);
+    fetchPost();
   }
 
   const fetchPost = async () => {
