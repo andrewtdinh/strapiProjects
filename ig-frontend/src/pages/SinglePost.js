@@ -34,15 +34,16 @@ export default function SinglePost({match, history}) {
     console.log('handleEditSubmit: data  -->', data);
   }
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      const response = await fetch(`http://localhost:1337/posts/${id}`);
-      const data = await response.json();
+  const fetchPost = async () => {
+    const response = await fetch(`http://localhost:1337/posts/${id}`);
+    const data = await response.json();
 
-      setPost(data);
-      setDescription(data.description);
-      setLoading(false);
-    }
+    setPost(data);
+    setDescription(data.description);
+    setLoading(false);
+  }
+
+  useEffect(() => {
     fetchPost();
   }, []);
 
