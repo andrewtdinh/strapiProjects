@@ -5,6 +5,7 @@ export default function Nav() {
     <div className="Nav">
       <NavLink to="/" exact>Home</NavLink>
       <NavLink to="/create" exact>Create</NavLink>
+      <NavLink to="/login" exact>Login</NavLink>
     </div>
   )
 }
