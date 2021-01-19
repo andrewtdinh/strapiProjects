@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Post from '../components/Post';
+
+import { UserContext } from '../context/UserContext';
 
 export default function SinglePost({match, history}) {
   const { id } = match.params;
+
+  const { user, setUser } = useContext(UserContext);
+
   const [ post, setPost ] = useState({});
   const [ loading, setLoading ] = useState(false);
   const [ edit, setEdit ] = useState(false);
