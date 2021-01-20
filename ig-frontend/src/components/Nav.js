@@ -5,12 +5,16 @@ import UserContext from '../context/UserContext';
 
 export default function Nav() {
   const { user } = useContext(UserContext);
-  
+
   return (
     <div className="Nav">
       <NavLink to="/" exact>Home</NavLink>
-      <NavLink to="/create" exact>Create</NavLink>
-      <NavLink to="/login" exact>Login</NavLink>
+      {user &&
+        <NavLink to="/create" exact>Create</NavLink>
+      }
+      {!user &&
+        <NavLink to="/login" exact>Login</NavLink>
+      }
     </div>
   )
 }
