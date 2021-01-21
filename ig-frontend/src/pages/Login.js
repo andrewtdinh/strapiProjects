@@ -3,6 +3,7 @@ import { useState } from 'react';
 export default () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ error, setError ] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,6 +20,7 @@ export default () => {
     });
     
     const data = await response.json();
+    console.log({data})
   }
 
   return (
