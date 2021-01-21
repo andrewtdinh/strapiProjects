@@ -20,6 +20,10 @@ export default () => {
     });
     
     const data = await response.json();
+
+    if (data.message) {
+      setError(data.message[0].messages[0].message);
+    }
     console.log({data})
   }
 
@@ -40,6 +44,8 @@ export default () => {
         />
         <button>Login</button>
       </form>
+
+      {error && <p>{error}</p>}
     </div>
   )
 }
