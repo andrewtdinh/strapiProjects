@@ -1,12 +1,18 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import UserContext from '../context/UserContext';
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+export default ({ history }) => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext) || {};
+
+  useEffect(() => {
+    if (user) {
+      history.push('/')
+    }
+  }, [user]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
