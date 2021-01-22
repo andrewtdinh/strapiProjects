@@ -39,12 +39,18 @@ export default () => {
         <input 
           type="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => {
+            setError('')
+            setEmail(event.target.value)
+          }}
         />
         <input 
           type="password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={(event) => {
+            setError('')
+            setPassword(event.target.value)
+          }}
         />
         <button>Login</button>
       </form>
