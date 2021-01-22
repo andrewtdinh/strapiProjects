@@ -8,23 +8,27 @@ export default () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('http://localhost:1337/auth/local/', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        identifier: email,
-        password
-      })
-    });
-    
-    const data = await response.json();
+    try {
+      const response = await fetch('http://localhost:1337/auth/local/', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          identifier: email,
+          password
+        })
+      });
+      
+      const data = await response.json();
 
-    if (data.message) {
-      setError(data.message[0].messages[0].message);
+      if (data.message) {
+        setError(data.message[0].messages[0].message);
+      }
+    } catch (error) {
+      setError('Something went wrong: ' + error)
     }
-    console.log({data})
+
   }
 
   return (
