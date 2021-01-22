@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import UserContext from '../context/UserContext';
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
+
+  const { user, setUser } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +27,11 @@ export default () => {
 
       if (data.message) {
         setError(data.message[0].messages[0].message);
+
+        return
       }
+
+      setUser(data);
     } catch (error) {
       setError('Something went wrong: ' + error)
     }
