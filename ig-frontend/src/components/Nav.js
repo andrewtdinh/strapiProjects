@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 
-import UserContext from '../context/UserContext';
+import { UserContext } from '../context/UserContext';
 
 export default function Nav() {
-  const { user } = useContext(UserContext) || {};
+  const { user } = useContext(UserContext);
 
   return (
     <div className="Nav">
