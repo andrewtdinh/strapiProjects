@@ -6,9 +6,25 @@ export default () => {
   const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
+    try {
+      const response = await fetch('http://localhost:1337/auth/local/register', {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          username: email,
+          email,
+          password
+        })
+      });
+      
+    } catch (err) {
+      setError('Somthing went wrong during signup: ' + err)
+    }
   }
 
   return (
