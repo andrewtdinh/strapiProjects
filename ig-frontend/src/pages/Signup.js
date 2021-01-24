@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../context/UserContext';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
+
+  const { user, setUser } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,9 +26,13 @@ export default () => {
       });
 
       const data = await response.json();
+      if (data.message) {
+        setError(data.message[0].messages[0].message);
 
-      console.log({data})
+        return
+      }
 
+      setUser(data);
     } catch (err) {
       setError('Somthing went wrong during signup: ' + err)
     }
