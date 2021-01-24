@@ -12,10 +12,14 @@ export default () => {
 
       <form>
         <input 
-        
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input 
-        
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </form>
 
