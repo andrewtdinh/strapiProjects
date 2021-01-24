@@ -6,11 +6,16 @@ export default () => {
   const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+  }
+
   return (
     <div>
       <h2>Signup Page</h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <input 
           type='email'
           value={email}
@@ -21,6 +26,7 @@ export default () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <button>Signup</button>
       </form>
 
       {error && <p>{error}</p>}
