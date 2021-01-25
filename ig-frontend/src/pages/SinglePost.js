@@ -29,7 +29,8 @@ export default function SinglePost({match, history}) {
     const response = await fetch(`http://localhost:1337/posts/${id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.jwt}`
       },
       body: JSON.stringify({
         description,
