@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 export default function Create({history}) {
   const [ description, setDescription ] = useState('');
   const [ file, setFile ] = useState(null);
   const [ error, setError ] = useState('');
 
+  const { user } = useContext(UserContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!user) {
+      setError('Please log in first');
+
+      return 
+    }
 
     if (!description) {
       setError('Please add a description.');
@@ -25,6 +34,9 @@ export default function Create({history}) {
     try {
       const response = await fetch('http://localhost:1337/posts', {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${user.jwt}`
+        },
         body: formData,
       });
 
