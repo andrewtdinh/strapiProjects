@@ -17,7 +17,10 @@ export default function SinglePost({match, history}) {
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:1337/posts/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.jwt}`
+      }
     });
     await response.json();
     history.push('/')
