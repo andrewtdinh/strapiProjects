@@ -28,7 +28,7 @@ module.exports = {
 
       const { user } = ctx.state;
 
-      entity = await strapi.services.post.create({ ...data, ...{likes: 0, user} }, { files });
+      entity = await strapi.services.post.create({ ...data, ...{likes: 0, author: user} }, { files });
     } else {
       ctx.throw(400, 'You must submit a multi-part request!')
     }
