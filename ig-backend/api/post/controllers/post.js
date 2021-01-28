@@ -49,5 +49,14 @@ module.exports = {
     }
 
     return sanitizeEntity(entity, { model: strapi.models.post });
+  },
+
+  async delete(ctx) {
+    const { id } = ctx.params;
+    const { user } = ctx.state;
+
+    const entity = await strapi.services.post.delete({ id, author: user.id });
+
+    return sanitizeEntity(entity, { model: strapi.models.post });
   }
 };
