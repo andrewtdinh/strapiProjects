@@ -31,6 +31,10 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "posts"
+    },
+    "like_events": {
+      "via": "post",
+      "collection": "like"
     }
   }
 }
