@@ -10,6 +10,7 @@ export default ({ history }) => {
 
   useEffect(() => {
     if (user) {
+      console.log({user})
       history.push('/')
     }
   }, [user]);
