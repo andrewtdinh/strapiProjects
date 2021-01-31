@@ -27,7 +27,7 @@ module.exports = {
     }
 
     const found = await strapi.services.like.findOne({
-      id: user.id,
+      user: user.id,
       post
     })
     if (found) {

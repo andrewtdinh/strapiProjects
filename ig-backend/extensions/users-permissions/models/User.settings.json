@@ -64,7 +64,7 @@
       "collection": "post"
     },
     "likes": {
-      "via": "users_permissions_user",
+      "via": "user",
       "collection": "like"
     }
   }

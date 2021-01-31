@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "likes",
   "info": {
-    "name": "like"
+    "name": "like",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -10,7 +11,7 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "users_permissions_user": {
+    "user": {
       "plugin": "users-permissions",
       "model": "user",
       "via": "likes"
