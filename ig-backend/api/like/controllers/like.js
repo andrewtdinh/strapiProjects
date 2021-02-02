@@ -5,8 +5,6 @@
  * to customize this controller
  */
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
-const { create, delete } = require('../../post/controllers/post');
-
 
 module.exports = {
   async create(ctx) {
