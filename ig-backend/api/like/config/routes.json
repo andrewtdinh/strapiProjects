@@ -2,7 +2,15 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/likes",
+      "path": "/likes/given",
+      "handler": "like.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/likes/received",
       "handler": "like.find",
       "config": {
         "policies": []
