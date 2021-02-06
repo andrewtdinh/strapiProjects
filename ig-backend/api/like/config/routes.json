@@ -13,7 +13,7 @@
       "path": "/likes/received",
       "handler": "like.find",
       "config": {
-        "policies": []
+        "policies": ["postAuthorIsMe"]
       }
     },
     {
