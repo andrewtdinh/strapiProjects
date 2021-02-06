@@ -5,7 +5,7 @@
       "path": "/likes/given",
       "handler": "like.find",
       "config": {
-        "policies": []
+        "policies": ["isTargetUserLoggedIn"]
       }
     },
     {
