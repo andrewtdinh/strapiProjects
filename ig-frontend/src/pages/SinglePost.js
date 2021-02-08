@@ -54,7 +54,8 @@ export default function SinglePost({match, history}) {
         body: JSON.stringify({
           post: parseInt(id)
         })
-      })
+      });
+      fetchPost();
     } catch (error) {
       console.log("Exception: ", error);
     }
