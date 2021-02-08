@@ -39,13 +39,13 @@ export default function SinglePost({match, history}) {
         description,
       })
     });
-    const data = await response.json();
+    await response.json();
     fetchPost();
   }
 
   const handleLike = async () => {
     try {
-      const response = await fetch('http://localhost:1337/likes', {
+      await fetch('http://localhost:1337/likes', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.jwt}`,
@@ -63,7 +63,7 @@ export default function SinglePost({match, history}) {
 
   const handleUnlike = async () => {
     try {
-      const response = await fetch(`http://localhost:1337/likes/${id}`, {
+      await fetch(`http://localhost:1337/likes/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.jwt}`,
