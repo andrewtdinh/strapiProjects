@@ -43,6 +43,23 @@ export default function SinglePost({match, history}) {
     fetchPost();
   }
 
+  const handleLike = async () => {
+    try {
+      const response = await fetch('http://localhost:1337/likes', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${user.jwt}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          post: parseInt(id)
+        })
+      })
+    } catch (error) {
+      console.log("Exception: ", error);
+    }
+  }
+
   const fetchPost = async () => {
     const response = await fetch(`http://localhost:1337/posts/${id}`);
     const data = await response.json();
@@ -68,6 +85,13 @@ export default function SinglePost({match, history}) {
                 url={post.image && post.image.url}
                 likes={post.likes}
               />
+
+              {user &&
+                <>
+                  <button onClick={handleLike}>Like</button>
+                </>
+              }
+
               {user &&
                 <>
                   <button onClick={handleDelete}>Delete this post.</button>
