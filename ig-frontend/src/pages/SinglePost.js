@@ -61,6 +61,20 @@ export default function SinglePost({match, history}) {
     }
   }
 
+  const handleUnlike = async () => {
+    try {
+      const response = await fetch(`http://localhost:1337/likes/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.jwt}`,
+        },
+      });
+      fetchPost();
+    } catch (error) {
+      console.log("Exception: ", error);
+    }
+  }
+
   const fetchPost = async () => {
     const response = await fetch(`http://localhost:1337/posts/${id}`);
     const data = await response.json();
@@ -90,6 +104,7 @@ export default function SinglePost({match, history}) {
               {user &&
                 <>
                   <button onClick={handleLike}>Like</button>
+                  <button onClick={handleUnlike}>Unlike</button>
                 </>
               }
 
