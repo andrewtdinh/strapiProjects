@@ -36,7 +36,7 @@ export default ({ children }) => {
   }, [user])
 
   return (
-    <LikesContext.Provider>
+    <LikesContext.Provider value={{ likesGiven, likesReceived }}>
       { children }
     </LikesContext.Provider>
   )
