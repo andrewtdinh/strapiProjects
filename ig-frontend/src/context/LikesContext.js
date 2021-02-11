@@ -6,6 +6,7 @@ export const LikesContext = createContext(null);
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({ children }) => {
   const { user } = useContext(UserContext);
+  const [ likesGiven, setLikesGiven ] = useState([])
 
   useEffect(() => {
     if (user) {
@@ -16,6 +17,7 @@ export default ({ children }) => {
           }
         });
         const data = await response.json();
+        setLikesGiven(data);
       }
     }
   }, [user])
