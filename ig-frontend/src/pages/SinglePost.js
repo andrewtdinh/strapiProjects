@@ -8,7 +8,7 @@ export default function SinglePost({match, history}) {
   const { id } = match.params;
 
   const { user, setUser } = useContext(UserContext);
-  const { likesGiven, likesReceived } = useContext(LikesContext);
+  const { likesGiven, reloader } = useContext(LikesContext);
 
   const [ post, setPost ] = useState({});
   const [ loading, setLoading ] = useState(false);
@@ -58,13 +58,15 @@ export default function SinglePost({match, history}) {
         })
       });
       fetchPost();
+      reloader();
     } catch (error) {
       console.log("Exception: ", error);
     }
   }
 
   const isPostAlreadyLiked = (() => {
-    return likesGiven && likesGiven.find(like => like.post && like.post.id === id)
+    // The double equal sign is correct.
+    return likesGiven && likesGiven.find(like => like.post && like.post.id == id)
   })();
 
   console.log({isPostAlreadyLiked})
@@ -78,6 +80,7 @@ export default function SinglePost({match, history}) {
         },
       });
       fetchPost();
+      reloader();
     } catch (error) {
       console.log("Exception: ", error);
     }
