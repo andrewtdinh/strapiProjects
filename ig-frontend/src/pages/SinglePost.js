@@ -2,11 +2,13 @@ import { useEffect, useState, useContext } from 'react';
 import Post from '../components/Post';
 
 import { UserContext } from '../context/UserContext';
+import { LikesContext } from '../context/LikesContext';
 
 export default function SinglePost({match, history}) {
   const { id } = match.params;
 
   const { user, setUser } = useContext(UserContext);
+  const { likesGiven, likesReceived } = useContext(LikesContext);
 
   const [ post, setPost ] = useState({});
   const [ loading, setLoading ] = useState(false);
@@ -61,6 +63,12 @@ export default function SinglePost({match, history}) {
     }
   }
 
+  const isPostAlreadyLiked = (() => {
+    return likesGiven && likesGiven.find(like => like.post && like.post.id === id)
+  })();
+
+  console.log({isPostAlreadyLiked})
+
   const handleUnlike = async () => {
     try {
       await fetch(`http://localhost:1337/likes/${id}`, {
@@ -103,8 +111,10 @@ export default function SinglePost({match, history}) {
 
               {user &&
                 <>
-                  <button onClick={handleLike}>Like</button>
-                  <button onClick={handleUnlike}>Unlike</button>
+                  { isPostAlreadyLiked 
+                      ? <button onClick={handleUnlike}>Unlike</button>
+                      : <button onClick={handleLike}>Like</button>
+                  }
                 </>
               }
 
