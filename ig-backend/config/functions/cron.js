@@ -19,7 +19,7 @@ module.exports = {
   //
   // }
 
-  '* * * * * *': async () => {
+  '0 0 0 * * *': async () => {
     console.log('Print out every second');
   }
 };
